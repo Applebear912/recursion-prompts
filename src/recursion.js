@@ -9,6 +9,7 @@
 
 //create a variable to store value
 var factorial = function(n) {
+  // console.log("Begin factorial: " + n);
   //edge cases
   if (n < 0) {
     return null;
@@ -17,18 +18,34 @@ var factorial = function(n) {
   if (n === 0) {
     return 1;
   }
+
+  var res = n * factorial(n-1);
+  // console.log("End factorial: " + n);
+
   //recursion
-  return n * factorial(n-1);
+  return res;
 };
 
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
+  if (array.length === 0) {
+    return 0;
+  }
+  return array[0] + sum(array.slice(1));
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
+
 var arraySum = function(array) {
+  if (array.length === 0) {
+    return 0;
+  }
+  if (Array.isArray(array[0])) {
+    return arraySum(array[0]);
+  }
+  return array[0] + arraySum (array.slice(1));
 };
 
 // 4. Check if a number is even.
