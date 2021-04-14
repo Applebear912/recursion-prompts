@@ -43,19 +43,40 @@ var arraySum = function(array) {
     return 0;
   }
   if (Array.isArray(array[0])) {
-    return arraySum(array[0]);
+    return array[0] + arraySum(array.slice(1));
   }
-  return array[0] + arraySum (array.slice(1));
+    return array[0] + arraySum(array.slice(1));
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+  //input is a number
+  //output is a boolean
+
+  //edge case
+  if (n < 0) {
+    n = Math.abs(n);
+  }
+  if (n === 0) {
+    return true;
+  }
+  if (n === 1) {
+    return false;
+  }
+    return isEven(n-2);
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
+var result = 0;
 var sumBelow = function(n) {
+  //base case
+  n = Math.abs(n);
+  if (n === 0 || n === 1) {
+    return 0;
+  }
+  return result += sumBelow(n-1);
 };
 
 // 6. Get the integers within a range (x, y).
