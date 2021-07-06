@@ -69,14 +69,21 @@ var isEven = function(n) {
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
-var result = 0;
 var sumBelow = function(n) {
+  let isNegative = n < 0 ? true : false;
   //base case
   n = Math.abs(n);
-  if (n === 0 || n === 1) {
-    return 0;
+  let sum = 0;
+  function helper(i) {
+    if (i === n) {
+      return 0;
+    } else {
+      sum += i;
+      return helper(i+1);
+    }
   }
-  return result += sumBelow(n-1);
+  helper(0);
+  return isNegative ? -sum : sum;
 };
 
 // 6. Get the integers within a range (x, y).
